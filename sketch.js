@@ -130,6 +130,10 @@ function draw() {
      
      //change the trex animation
       trex.changeAnimation("collided", trex_collided);
+
+      if(mousePressedOver(restart)) {
+        reset();
+      }
     
      
      
@@ -149,16 +153,18 @@ function draw() {
   //stop trex from falling down
   trex.collide(invisibleGround);
   
-  if(mousePressedOver(restart)) {
-      reset();
-    }
+  
 
 
   drawSprites();
 }
 
 function reset(){
-  
+  gameState = PLAY
+  obstaclesGroup.destroyEach()
+  cloudsGroup.destroyEach()
+  trex.changeAnimation("running", trex_running);
+  score = 0 
 
 }
 
